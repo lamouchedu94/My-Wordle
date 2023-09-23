@@ -32,7 +32,7 @@ function game() {
         
         // let guessNotInWord : string[] = []
         // let guessInWord : string[] = []
-        // let guessIsGood : string[] = []
+        let guessCorrection : string[] = []
         
         //Navigate in user input
         const userInputArray : string[] = userInput.split("") 
@@ -40,26 +40,23 @@ function game() {
         userInputArray.forEach((element : any) => {
             // Try each letter
             if (element === motADeviner[iteration]) {
-                //Display correct guess.
-                console.log(`The letter${green} ${element} ${resetColor}is in the word and in the correct spot.`)
-                //guessIsGood.push(element);
+                //add guess to array with his color.
+                guessCorrection.push(`${green} ${element} ${resetColor}`);
             } else if (motADeviner.split('').indexOf(element) === -1) {
-                //Display letter are in any spot.
-                console.log(`The letter${red} ${element} ${resetColor}is not in any spot.`);
-                //guessNotInWord.push(element);
+                //add guess to array with his color.
+                guessCorrection.push(`${red} ${element} ${resetColor}`);
             } else {
-                //Display letter in word but in the wrong spot.
-                console.log(`The letter${yellow} ${element} ${resetColor}is in word but in the wrong spot.`);
-                //guessInWord.push(element);
+                //add guess to array with his color.
+                guessCorrection.push(`${yellow} ${element} ${resetColor}`);
             }
             
             iteration += 1
         });
-        
+        console.log(guessCorrection.join(''))
         console.log(`${essais} try left.`);
         i += 1;
     }
     //Display game over message
-    console.log(`The word was : ${motADeviner}.`);
+    console.log(`Game Over. The word was : ${motADeviner}.`);
 }
 game()
