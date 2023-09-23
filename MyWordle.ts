@@ -8,7 +8,13 @@ let test : string = "test"
 
 function game() {
     const motADeviner : string = lib.getRandomWord();
-    //console.log(motADeviner);
+    const red = `\x1B[31m`
+    const green = `\x1B[32m`
+    const yellow = `\x1B[33m`
+    const resetColor = `\x1B[0m`
+     
+    console.log(`${motADeviner}`);
+    
     let i : number = 1; // i count number of try
     // Game loop
     for (let essais = 6; essais > -1; essais -= 1) {
@@ -19,6 +25,7 @@ function game() {
             continue;
         }
         if (userInput === motADeviner) {
+            console.log(`${green} ${userInput} ${resetColor}`)
             console.log(`Congratulation you found the Word in ${i} try !`);
             return true
         }
@@ -34,15 +41,15 @@ function game() {
             // Try each letter
             if (element === motADeviner[iteration]) {
                 //Display correct guess.
-                console.log(`The letter ${element} is in the word and in the correct spot.`)
+                console.log(`The letter${green} ${element} ${resetColor}is in the word and in the correct spot.`)
                 //guessIsGood.push(element);
             } else if (motADeviner.split('').indexOf(element) === -1) {
                 //Display letter are in any spot.
-                console.log(`The letter ${element} is not in any spot.`);
+                console.log(`The letter${red} ${element} ${resetColor}is not in any spot.`);
                 //guessNotInWord.push(element);
             } else {
                 //Display letter in word but in the wrong spot.
-                console.log(`The letter ${element} is in word but in the wrong spot.`);
+                console.log(`The letter${yellow} ${element} ${resetColor}is in word but in the wrong spot.`);
                 //guessInWord.push(element);
             }
             
