@@ -8,11 +8,11 @@ let test : string = "test"
 
 function game() {
     const motADeviner : string = lib.getRandomWord();
-    console.log(motADeviner);
+    //console.log(motADeviner);
     let i : number = 1; // i count number of try
     // Game loop
     for (let essais = 6; essais > -1; essais -= 1) {
-        let userInput :string = lib.getInput("Give a word :").toUpperCase();
+        let userInput :string = lib.getInput("Try a word :").toUpperCase();
         if (userInput.length < 5 || userInput.length > 5) {
             essais += 1;
             console.log("The guess must be a five letters word.");
@@ -47,18 +47,6 @@ function game() {
             }
             
             iteration += 1
-        });
-        
-        
-        guessIsGood.forEach((elem) => {
-            console.log(`The letter ${elem} is in the word and in the correct spot.`);
-        })
-        
-        guessNotInWord.forEach((elem) => {
-            console.log(`The letter ${elem} is not in any spot.`);
-        });
-        guessInWord.forEach((elem) => {
-            console.log(`The letter ${elem} is in word but in the wrong spot.`);
         });
         
         console.log(`${essais} try left.`);
