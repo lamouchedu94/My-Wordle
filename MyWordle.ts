@@ -4,7 +4,7 @@
 // pour un mot aléatoire
 //console.log(lib.getRandomWord());
 function game() {
-    const lib = require('./lib');
+    const lib = require('./lib'); 
     const motADeviner : string = lib.getRandomWord();
     //define color
     const red = `\x1B[31m`
@@ -16,7 +16,7 @@ function game() {
     
     let i : number = 1; // i count number of try
     // Game loop
-    for (let essais = 6; essais > -1; essais -= 1) {
+    for (let essais = 5; essais > -1; essais -= 1) {
         //User input are automatically convert To UpperCase
         let userInput :string = lib.getInput("Try a word :").toUpperCase();
         if (userInput.length < 5 || userInput.length > 5) {
