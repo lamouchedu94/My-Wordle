@@ -18,7 +18,24 @@ function game() {
     // Game loop
     for (let essais = 5; essais > -1; essais -= 1) {
         //User input are automatically convert To UpperCase
-        let userInput :string = lib.getInput("Try a word :").toUpperCase();
+         
+        let userInput :string = lib.getInput("Try a word :");
+        const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        let quit = false
+        for (const input of userInput) {
+            
+            if (alphabet.indexOf(input) === -1) {
+                quit = true    
+            }
+            
+        }
+        if (quit) {
+            essais += 1;
+            console.log("Bad input. Retry with another guess.");
+            continue
+        }
+
+
         if (userInput.length < 5 || userInput.length > 5) {
             essais += 1;
             console.log("The guess must be a five letters word.");
